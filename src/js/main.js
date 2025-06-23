@@ -22,17 +22,34 @@ levier.addEventListener('input', () => {
     }
 });
 
+
+
+
 levier.addEventListener('change', ()=> {
     vitesse = 0
     levier.value = 0
     isMoving = false
+
+    if(positionY < 450){
+        console.log("Pas assez rempli") // check le remplissage
+        levier.disabled = true;
+    }
+
 })
+
 
     
 function moveUp() {
     if (isMoving) {
         positionY += vitesse +0.4;   //valeur a modifier pour influer sur la vitesse de remplissage
         carre.style.bottom = positionY + 'px';
-        requestAnimationFrame(moveUp);    
+        requestAnimationFrame(moveUp);  
     }
+
+    if(positionY > 500){
+        console.log("deborde")    //check le debordement 
+        levier.disabled = true;
+        isMoving = false
+    }
+
 }
