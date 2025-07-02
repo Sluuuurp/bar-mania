@@ -45,7 +45,6 @@ levier.addEventListener('mouseup', ()=> {
 })
 
 
-    
 function moveUp() {
     if (isMoving) {
         positionY += vitesse +0.4;   //valeur a modifier pour influer sur la vitesse de remplissage
@@ -63,6 +62,7 @@ function moveUp() {
 }
 
 
+// gere la remise a 0 après un remplissage
 function ResetChope() {
     setTimeout( ()=>{
         carre.style.bottom = "20px"
