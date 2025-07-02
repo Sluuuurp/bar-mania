@@ -4,7 +4,7 @@ const levier  = document.querySelector('#levier');
 let vitesse   = 0;     // pixels par frame
 let positionY = 20;    // position initiale (px)
 let isMoving  = false; // état de l’animation
-
+console.dir(levier)
 
 
 levier.addEventListener('input', () => {
@@ -25,7 +25,7 @@ levier.addEventListener('input', () => {
 
 
 
-levier.addEventListener('change', ()=> {
+levier.addEventListener('mouseup', ()=> {
     vitesse = 0
     levier.value = 0
     isMoving = false
@@ -33,7 +33,14 @@ levier.addEventListener('change', ()=> {
     if(positionY < 450){
         console.log("Pas assez rempli") // check le remplissage
         levier.disabled = true;
+        
     }
+    else if(positionY > 450 && positionY < 500){
+        console.log("bien jouer !")
+        levier.disabled = true;
+    }
+    
+    ResetChope()
 
 })
 
@@ -50,6 +57,19 @@ function moveUp() {
         console.log("deborde")    //check le debordement 
         levier.disabled = true;
         isMoving = false
+        ResetChope()
     }
+
+}
+
+
+function ResetChope() {
+    setTimeout( ()=>{
+        carre.style.bottom = "20px"
+        positionY = 20
+        isMoving = false
+        levier.disabled = false 
+        levier.value = 0
+    },2000)
 
 }
